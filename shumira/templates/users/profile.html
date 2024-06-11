@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br><br><div class="mx-auto text-center text-dark mb-4" >
+    <h3 style="font-weight: 800;">My Profile</h3>
+</div>
+
+<br><div class="card mx-auto" style="width: 40rem;">
+    <div class="card-body">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                
+
+                <div class="media">
+                    <img class="rounded-circle account-img" style="width:100px; height:100px;" src="{{ user.profile.image.url|default:'default.jpg' }}">
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <br><h5>Details</h5>
+                    <br><div class="mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="{{ u_form.username.name }}" id="username" value="{{ u_form.username.value|default_if_none:'' }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="{{ u_form.email.name }}" id="email" value="{{ u_form.email.value|default_if_none:'' }}" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="image">Upload Picture</label>
+                        <input type="file" class="form-control-file" name="{{ p_form.image.name }}" id="image" value="{{ p_form.image.value|default_if_none:'' }}">
+                    </div>
+                    <button class="btn mb-3 w-100 text-white"  style="background-color:rgb(122, 81, 151);" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}

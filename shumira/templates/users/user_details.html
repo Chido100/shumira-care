@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4">
+    <h3 style="font-weight: 800;">User Details</h3>
+</div>
+
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mx-auto" style="width: 50rem; background-color:rgb(201, 206, 238)">
+                <div class="card-body">
+                    <table class="table">   
+                        <div class="media">
+                        <img class="rounded-circle account-img" style="width:100px; height:100px;" src="{{ user.profile.image.url|default:'default.jpg' }}">
+
+                        <tr>
+                            <th>Username:</th>
+                            <td>{{user.username}}</td>
+                        </tr>
+                        
+                        
+
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{user.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Date Joined:</th>
+                            <td>{{user.date_joined}}</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

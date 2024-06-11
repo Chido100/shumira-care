@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <br><h1 class="mx-auto text-center text-dark mb-4" style="color: rgb(47, 47, 87); font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 800;">{{ item.name }}</h1>
+    <div class="container" style="max-width: 70%; max-height: 70px;">
+        <div class="card">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}">
+                
+            {% else %}
+                <div class="card-img-top bg-secondary text-white text-center py-3">
+                    No Image Available
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text"><small class="text-muted">Created on: {{ item.date_created }}</small></p>
+                <p class="card-text"><small class="text-muted">Posted by: {{ item.created_by.username }}</small></p>
+                {% if item.is_expired %}
+                    <p class="card-text text-danger">This item has expired</p>
+                {% endif %}
+
+                <!--{% if user == item.created_by %}
+                    <form action="{% url 'delete-item' item.pk %}" method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'edit-item' item.pk %}" class="btn btn-warning">Edit</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                {% endif %}-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

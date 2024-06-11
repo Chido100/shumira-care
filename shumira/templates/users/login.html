@@ -1,0 +1,39 @@
+{% extends 'users/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    body {
+        background: url('/media/auth_image/Night time sky.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+
+
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="card mx-auto" style="width: 30rem;">
+        <div class="card-body p-3 mb-2 bg-light text-dark">
+            <div class="d-flex align-items-center mb-3 justify-content-center">
+                <a class="navbar-brand">
+                    <img src="/media/shumira_logo/shumira_image.png" alt="App Logo" height="200" class="d-inline-block align-text-top">
+                </a>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <button class="btn btn-dark mb-3 w-100" style="background-color:rgb(122, 81, 151);">Login</button>
+                <br><small class="text-muted ml-2">Forgot password? <a href="{% url 'password_reset' %}">Reset Password</a></small>           
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">Don't have an account? <a class="ml-2" href="{% url 'register-user' %}">Register</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

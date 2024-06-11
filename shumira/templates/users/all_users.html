@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><div class="mx-auto text-center text-dark mb-4" >
+    <h3 style="font-weight: 800;">Registered Users</h3>
+</div>
+
+
+<!--<div class="card mx-auto" style="width: 76rem;">-->
+    <br><div class="card mx-auto" style="width: 76rem; background-color:rgb(201, 206, 238)">
+    <div class="card-body">
+        <h5 class="card-title mb-3">All Users</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date Joined</th>    
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><small>{{user.email}}</small></td>
+                    <td><small>{{user.date_joined|date:"j F, Y"}}</small></td>
+        
+                    <td><small><a href="{% url 'user-details' user.pk %}">View Details</a></small></td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}
