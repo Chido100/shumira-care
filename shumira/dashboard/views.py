@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Item, AboutUs
+from .models import Item
 from .forms import NewItemForm, EditItemForm
 from django.contrib.auth.decorators import login_required
 
@@ -60,8 +60,3 @@ def delete_item(request, pk):
         return redirect('dashboard')
     return render(request, 'dashboard/delete_item.html', {'item': item})
 
-
-# About Us page
-def about_us(request):
-    abouts = AboutUs.objects.all()
-    return render(request, 'dashboard/about_us.html', {'abouts': abouts})

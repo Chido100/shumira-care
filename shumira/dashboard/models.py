@@ -15,15 +15,5 @@ class Item(models.Model):
         return self.title
 
 
-class AboutUs(models.Model):
-    title = models.CharField(max_length=100, blank=True, null=True, default='About Us')
-    image = models.ImageField(upload_to='item_images')
-    content = models.TextField()
-
-    class Meta:
-        verbose_name_plural = 'About Us'
-
-    def __str__(self):
-        return self.title
 
 
